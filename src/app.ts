@@ -1,7 +1,3 @@
-/**
- * If you would like to turn your application into a standalone executable, look at server.js file
- */
-
 import path from 'node:path'
 import fastifyAutoload from '@fastify/autoload'
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
@@ -15,11 +11,12 @@ export const options = {
   }
 }
 
-export default async function serviceApp (
+export default async function serviceApp(
   fastify: FastifyInstance,
   opts: FastifyPluginOptions
 ) {
   delete opts.skipOverride // This option only serves testing purpose
+
   // This loads all external plugins defined in plugins/external
   // those should be registered first as your application plugins might depend on them
   await fastify.register(fastifyAutoload, {
@@ -28,8 +25,7 @@ export default async function serviceApp (
   })
 
   // This loads all your application plugins defined in plugins/app
-  // those should be support plugins that are reused
-  // through your application
+  // those should be support plugins that are reused through your application
   fastify.register(fastifyAutoload, {
     dir: path.join(import.meta.dirname, 'plugins/app'),
     options: { ...opts }
@@ -42,6 +38,10 @@ export default async function serviceApp (
     autoHooks: true,
     cascadeHooks: true,
     options: { ...opts }
+  })
+
+  fastify.get('/demo', async (request, reply) => {
+    return { hello: 'world' }
   })
 
   fastify.setErrorHandler((err, request, reply) => {
@@ -92,5 +92,6 @@ export default async function serviceApp (
       reply.code(404)
 
       return { message: 'Not Found' }
-    })
+    }
+  )
 }

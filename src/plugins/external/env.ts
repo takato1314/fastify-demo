@@ -22,11 +22,6 @@ declare module 'fastify' {
 const schema = {
   type: 'object',
   required: [
-    'MYSQL_HOST',
-    'MYSQL_PORT',
-    'MYSQL_USER',
-    'MYSQL_PASSWORD',
-    'MYSQL_DATABASE',
     'COOKIE_SECRET',
     'COOKIE_NAME',
     'COOKIE_SECURED'

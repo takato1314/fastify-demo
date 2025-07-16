@@ -1,17 +1,6 @@
-/**
- * This file is here only to show you how to proceed if you would
- * like to run your application as a standalone executable.
- *
- * You can launch it with the command `npm run standalone`
- */
-
+import closeWithGrace from 'close-with-grace'
 import Fastify from 'fastify'
 import fp from 'fastify-plugin'
-
-// Import library to exit fastify process, gracefully (if possible)
-import closeWithGrace from 'close-with-grace'
-
-// Import your application as a normal plugin.
 import serviceApp from './app.js'
 
 /**
@@ -75,3 +64,14 @@ async function init () {
 }
 
 init()
+
+// app.listen({
+//   port: 4000,
+//   host: 'localhost'
+// }, (err, address) => {
+//   if (err) {
+//     console.error(err);
+//     process.exit(1);
+//   }
+//   console.log(`Server is now listening on ${address}`);
+// });

@@ -12,7 +12,14 @@ export default [
         imports: 'never',
         exports: 'never',
         functions: 'never'
+      }],
+
+      '@stylistic/space-before-function-paren': ['error', {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
       }]
+
     }
   }
 ]

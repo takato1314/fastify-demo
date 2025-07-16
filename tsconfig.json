@@ -4,5 +4,8 @@
     "outDir": "dist",
     "rootDir": "src",
   },
-  "include": ["@types", "src/**/*.ts"]
+  "include": [
+    "@types",
+    "src/**/*.ts"
+  ]
 }
